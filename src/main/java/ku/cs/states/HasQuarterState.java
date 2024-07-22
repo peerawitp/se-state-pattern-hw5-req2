@@ -15,7 +15,6 @@ public class HasQuarterState implements State {
 
     @Override
     public void insertQuarter() {
-        System.out.println("You can't insert another quarter");
     }
 
     @Override
@@ -27,7 +26,13 @@ public class HasQuarterState implements State {
     @Override
     public void turnCrank() {
         System.out.println("You turned..");
-        machine.setCurrentState(machine.getGumballSoldState());
+
+        double random = Math.random();
+        if (random < 0.1 && machine.getInventory() >= 2) {
+            machine.setCurrentState(machine.getWinnerState());
+        } else {
+            machine.setCurrentState(machine.getGumballSoldState());
+        }
         machine.dispenseGumball();
     }
 

@@ -14,12 +14,14 @@ public class Machine {
     private final State hasQuarterState;
     private final State gumballSoldState;
     private final State outOfGumballsState;
+    private final State winnerState;
 
     public Machine(int gumballAmount) {
         noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
         gumballSoldState = new GumballSoldState(this);
         outOfGumballsState = new OutOfGumballsState(this);
+        winnerState = new WinnerState(this);
 
         this.inventory = gumballAmount;
         this.currentState = new NoQuarterState(this);
@@ -41,9 +43,9 @@ public class Machine {
         return gumballSoldState;
     }
 
-    public State getOutOfGumballsState() {
-        return outOfGumballsState;
-    }
+    public State getOutOfGumballsState() { return outOfGumballsState; }
+
+    public State getWinnerState() { return winnerState; }
 
     public int getInventory() {
         return inventory;
