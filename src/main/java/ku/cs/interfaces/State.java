@@ -8,5 +8,6 @@ public interface State {
     void turnCrank();
     void dispenseGumball();
     void ejectQuarter();
+    void choose(String flavor);
     void getInfo();
 }

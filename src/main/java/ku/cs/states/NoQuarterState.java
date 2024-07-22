@@ -35,6 +35,10 @@ public class NoQuarterState implements State {
     }
 
     @Override
+    public void choose(String flavor) {
+    }
+
+    @Override
     public void getInfo() {
         System.out.println("Machine is waiting for quarter");
     }

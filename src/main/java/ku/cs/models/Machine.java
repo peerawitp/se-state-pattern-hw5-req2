@@ -9,9 +9,11 @@ import ku.cs.states.*;
 public class Machine {
     private int inventory;
     private State currentState;
+    private String flavor;
 
     private final State noQuarterState;
     private final State hasQuarterState;
+    private final State chooseFlavorState;
     private final State gumballSoldState;
     private final State outOfGumballsState;
     private final State winnerState;
@@ -19,6 +21,7 @@ public class Machine {
     public Machine(int gumballAmount) {
         noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
+        chooseFlavorState = new ChooseFlavorState(this);
         gumballSoldState = new GumballSoldState(this);
         outOfGumballsState = new OutOfGumballsState(this);
         winnerState = new WinnerState(this);
@@ -31,12 +34,20 @@ public class Machine {
         this.currentState = state;
     }
 
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
     public State getNoQuarterState() {
         return noQuarterState;
     }
 
     public State getHasQuarterState() {
         return hasQuarterState;
+    }
+
+    public State getChooseFlavorState() {
+        return chooseFlavorState;
     }
 
     public State getGumballSoldState() {
@@ -49,6 +60,10 @@ public class Machine {
 
     public int getInventory() {
         return inventory;
+    }
+
+    public String getFlavor() {
+        return flavor;
     }
 
     public void insertQuarter() {
@@ -67,8 +82,12 @@ public class Machine {
         currentState.dispenseGumball();
     }
 
+    public void choose(String flavor) {
+        currentState.choose(flavor);
+    }
+
     public void releaseBall() {
-        System.out.println("A gumball comes rolling out the slot");
+        System.out.println("A " + this.getFlavor() + " gumball comes rolling out the slot");
         if (inventory != 0) {
             inventory--;
         }

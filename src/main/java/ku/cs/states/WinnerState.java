@@ -22,6 +22,10 @@ public class WinnerState implements State {
     }
 
     @Override
+    public void choose(String flavor) {
+    }
+
+    @Override
     public void turnCrank() {
     }
 
@@ -36,6 +40,7 @@ public class WinnerState implements State {
         } else {
             machine.setCurrentState(machine.getNoQuarterState());
         }
+        machine.setFlavor(null);
     }
 
     @Override

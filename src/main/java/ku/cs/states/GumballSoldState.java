@@ -22,6 +22,10 @@ public class GumballSoldState implements State {
     }
 
     @Override
+    public void choose(String flavor) {
+    }
+
+    @Override
     public void turnCrank() {
     }
 
@@ -34,6 +38,7 @@ public class GumballSoldState implements State {
             System.out.println("Oops, out of gumballs!");
             machine.setCurrentState(machine.getOutOfGumballsState());
         }
+        machine.setFlavor(null);
     }
 
     @Override

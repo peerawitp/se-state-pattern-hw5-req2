@@ -10,41 +10,15 @@ public class Main {
         Machine machine = new Machine(5);
         machine.getInfo();
 
-        System.out.println();
-        machine.insertQuarter();
-        machine.turnCrank();
-
-        System.out.println();
-        machine.getInfo();
-
-        System.out.println();
-        machine.insertQuarter();
-        machine.ejectQuarter();
-        machine.turnCrank();
-
-        System.out.println();
-        machine.getInfo();
-
-        System.out.println();
-        machine.insertQuarter();
-        machine.turnCrank();
         machine.insertQuarter();
         machine.turnCrank();
         machine.ejectQuarter();
 
         System.out.println();
-        machine.getInfo();
 
-        System.out.println();
         machine.insertQuarter();
-        machine.insertQuarter();
+        machine.choose("Mango");
+        machine.choose("Orange");
         machine.turnCrank();
-        machine.insertQuarter();
-        machine.turnCrank();
-        machine.insertQuarter();
-        machine.turnCrank();
-
-        System.out.println();
-        machine.getInfo();
     }
 }

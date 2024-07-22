@@ -6,10 +6,10 @@ import ku.cs.models.Machine;
 /**
  * @author 6510405741 Peerawit Pharkdeepinyo
  */
-public class HasQuarterState implements State {
+public class ChooseFlavorState implements State {
     private Machine machine;
 
-    public HasQuarterState(Machine machine) {
+    public ChooseFlavorState(Machine machine) {
         this.machine = machine;
     }
 
@@ -28,7 +28,6 @@ public class HasQuarterState implements State {
         if (flavor.equals("Mango") || flavor.equals("Orange")) {
             System.out.println("You have chosen the flavor " + flavor);
             machine.setFlavor(flavor);
-            machine.setCurrentState(machine.getChooseFlavorState());
         } else {
             System.out.println("Invalid flavor");
         }
@@ -36,7 +35,14 @@ public class HasQuarterState implements State {
 
     @Override
     public void turnCrank() {
-        System.out.println("You have to choose a flavor first");
+        System.out.println("You turned..");
+
+        double random = Math.random();
+        if (random < 0.1 && machine.getInventory() >= 2) {
+            machine.setCurrentState(machine.getWinnerState());
+        } else {
+            machine.setCurrentState(machine.getGumballSoldState());
+        }
         machine.dispenseGumball();
     }
 
